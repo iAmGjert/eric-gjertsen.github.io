@@ -14,6 +14,7 @@
  */
 function length(string) {
     // YOUR CODE BELOW HERE //
+    //return the length of the string with .length method
     return string.length;
 
 
@@ -25,6 +26,7 @@ function length(string) {
  */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
+    //return string parameter using the .toLowerCase() function
     return string.toLowerCase();
 
 
@@ -36,6 +38,7 @@ function toLowerCase(string) {
  */
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
+    //return string parameter using the .toUpperCase() function
     return string.toUpperCase();
 
 
@@ -57,7 +60,16 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-    
+    //create a newString variable to store the string parameter
+    var newString = string;
+    //parse through the newString variable a number of times equal to the parameter strings length to change any spaces to dashes using the .replace() method
+    for (var i = 0; i < string.length; i++)
+    {
+        //reassign the value of newString repacing first space with a dash
+        newString = newString.replace(" ", "-");
+    }
+    //return our newString in lowercase by utilizing the .toLowerCase() function
+    return newString.toLowerCase()
 
 
     // YOUR CODE ABOVE HERE //
