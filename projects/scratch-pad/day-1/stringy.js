@@ -89,7 +89,14 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+    //compare the first letter of the string against the character while converting them to lower case
+    if (string[0].toLowerCase() === char.toLowerCase()){
+        //return true if they match
+        return true;
+    } else{
+        //return false in any other case
+        return false;
+    }
     
 
     // YOUR CODE ABOVE HERE //
@@ -109,7 +116,14 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+    //compare the last letter of the string against the character while converting them to lower case
+    if (string[string.length - 1].toLowerCase() === char.toLowerCase()){
+        //return true if they match
+        return true;
+    } else{
+        //return false in any other case
+        return false;
+    }
 
 
     // YOUR CODE ABOVE HERE //
@@ -122,7 +136,8 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    //return the two string concatinated with the .concat operator
+    return stringOne.concat(stringTwo);
 
 
     // YOUR CODE ABOVE HERE //
@@ -141,7 +156,8 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
+    //return the args array joined using the .join function
+    return args.join("");
 
     // YOUR CODE ABOVE HERE //
 }
@@ -157,8 +173,12 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+    //compare the two strings lengths using the .length method and return the larger of the two. stringTwo returned if equal
+    if (stringOne.length > stringTwo.length){
+        return stringOne;
+    } else {
+        return stringTwo;
+    }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -172,7 +192,19 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    /*
+    I - two string value parameters
+    O - a number: 1 if the first is higher in alph ord, -1 if the second is higher is alph ord, and 0 if both string are equal.
+    C - N/A
+    E - N/A
+    */
+    if (stringOne.toLowerCase() === stringTwo.toLowerCase()){
+        return 0;
+    } else if (stringOne.toLowerCase() < stringTwo.toLowerCase()){
+        return 1;
+    } else {
+        return -1;
+    }
 
 
     // YOUR CODE ABOVE HERE //
