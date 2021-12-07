@@ -220,7 +220,14 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    //copy and pasted code from sortAscending function and flip comparason between the strings
+    if (stringOne.toLowerCase() === stringTwo.toLowerCase()){
+        return 0;
+    } else if (stringOne.toLowerCase() > stringTwo.toLowerCase()){
+        return 1;
+    } else {
+        return -1;
+    }
 
 
 
