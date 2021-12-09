@@ -117,7 +117,7 @@ function getObjectLength(object) {
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
   
-  var arr = [];//declare an array to hold object values
+  var arr = [];//declare and initialize an array to hold object values
   for (var key in object){//populate array by iterating through key:value pairs
     arr.push(object[key]);
   }
