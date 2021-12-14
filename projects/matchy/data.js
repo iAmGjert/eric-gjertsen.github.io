@@ -85,11 +85,19 @@ console.log(animals.length);
 //////////////////////////////////////////////////////////////////////
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-var friends = []; //chose array because it contains an ordered list.
+/*var friends = []; //chose array because it contains an ordered list.
 function getRandom(animals){
   return animals[Math.floor(animals.length * Math.random())];
 }
 friends.push(getRandom(animals).name);
+console.log(friends);
+animals[animals.length - 1]['friends'] = friends;
+console.log(animals);*/
+var friends = []; //chose array because it contains an ordered list.
+function getRandom(animals){
+  return Math.floor(animals.length * Math.random());
+}
+friends.push(animals[getRandom(animals)].name);
 console.log(friends);
 animals[animals.length - 1]['friends'] = friends;
 console.log(animals);

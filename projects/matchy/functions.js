@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-function search (arr, str){
+/*function search(arr, str){
     var ans = null;
     for (var i = 0; i < arr.length; i++){
         for (var key in arr[i]){
@@ -24,6 +24,20 @@ function search (arr, str){
         }
     }
     return ans;
+}*/
+function search(animals, name) {
+    var ans = null; 
+    for (var i = 0; i < animals.length; i++) {
+        for (var key in animals[i]) {
+            if (key === 'name') {
+                if (animals[i][key] === name) {
+                    ans = animals[i]; 
+                }
+            }
+        }
+
+    }
+return ans;  
 }
 
 
