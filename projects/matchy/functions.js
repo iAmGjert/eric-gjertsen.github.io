@@ -64,31 +64,21 @@ function remove(animals, name){
 //////////////////////////////////////////////////////////////////////
 
 function add(animals, animal){
-    var hasName = false;
+    var hasUniqueName = false;
     var hasSpecies = false;
-    var uniqueName = true;
-    for (var key in animal){
-        if (key === 'name'){
-            if (animal[key].length > 0){
-                hasName = true;
-            }
-            for (var i = 0; i < animals.length; i++){
-                for (var key in animals[i]){
-                    if (key === 'name'){
-                        if (animals[i][key] === animal[key]){
-                            uniqueName = false;
-                        }
-                    }
-                }
-            }
-        }
-        if (key === 'species'){
-            if (animal[key].length > 0){
-                hasSpecies = true;
+    if (animal.hasOwnProperty('name')){
+        if (search(animals, animal.name) === null){
+            if(typeof(animal['name']) === 'string'){
+                hasUniqueName = true;
             }
         }
     }
-    if ((hasName) && (hasSpecies) && (uniqueName)){
+    if (animal.hasOwnProperty('species')){
+        if(animal['species'].length > 0){
+            hasSpecies = true;
+        }
+    }
+    if (hasUniqueName && hasSpecies){
         animals.push(animal);
     }
 }
