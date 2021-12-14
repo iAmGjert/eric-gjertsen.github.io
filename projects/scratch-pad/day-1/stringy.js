@@ -200,7 +200,7 @@ function sortAscending(stringOne, stringTwo) {
     */
     if (stringOne.toLowerCase() === stringTwo.toLowerCase()){
         return 0;
-    } else if (stringOne.toLowerCase() < stringTwo.toLowerCase()){
+    } else if (stringOne.toLowerCase() > stringTwo.toLowerCase()){
         return 1;
     } else {
         return -1;
@@ -223,7 +223,7 @@ function sortDescending(stringOne, stringTwo) {
     //copy and pasted code from sortAscending function and flip comparason between the strings
     if (stringOne.toLowerCase() === stringTwo.toLowerCase()){
         return 0;
-    } else if (stringOne.toLowerCase() > stringTwo.toLowerCase()){
+    } else if (stringOne.toLowerCase() < stringTwo.toLowerCase()){
         return 1;
     } else {
         return -1;
