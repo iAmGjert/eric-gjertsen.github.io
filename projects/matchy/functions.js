@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-/*function search(arr, str){
+function search(arr, str){
     var ans = null;
     for (var i = 0; i < arr.length; i++){
         for (var key in arr[i]){
@@ -24,21 +24,8 @@
         }
     }
     return ans;
-}*/
-function search(animals, name) {
-    var ans = null; 
-    for (var i = 0; i < animals.length; i++) {
-        for (var key in animals[i]) {
-            if (key === 'name') {
-                if (animals[i][key] === name) {
-                    ans = animals[i]; 
-                }
-            }
-        }
-
-    }
-return ans;  
 }
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -65,7 +52,7 @@ function remove(animals, name){
         for (var key in animals[i]){
             if (key === 'name'){
                 if (animals[i][key] === name){
-                    animals.splice(i, 1, '');
+                    animals.splice(i, 1);
                 }
             }
         }
@@ -82,7 +69,7 @@ function add(animals, animal){
     var hasSpecies = false;
     if (animal.hasOwnProperty('name')){
         if (search(animals, animal.name) === null){
-            if(typeof(animal['name']) === 'string'){
+            if(animal.name.length > 0){
                 hasUniqueName = true;
             }
         }
