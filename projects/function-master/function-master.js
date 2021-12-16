@@ -172,7 +172,8 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-    
+    object[key] = value;
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -180,7 +181,14 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+    for (var i = 0; i < array.length; i++){
+        for (var key in object){
+            if (key === array[i]){
+                delete object[key];
+            }
+        }
+    }
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -188,7 +196,15 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+    for (var i = 0; i < array.length; i++){
+        for (var x = 0; x < array.length; x++){
+            if (array[i] === array[x] && i !== x){
+                array.splice(x, 1);
+                x = 0;
+            }
+        }
+    }
+    return array;
 }
 
 //////////////////////////////////////////////////////////////////////
