@@ -4,8 +4,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 function triangles(num) {
-  for (let str = '#'; str.length <= num; str += '#'){
+  //for (let str = '#'; str.length <= num; str += '#'){
+    //console.log(str);
+  //}
+  let str = '#'; 
+  while (str.length <= num){
     console.log(str);
+    str += '#'
   }
 }
 ////////////////////////////////////////////////////////////////////////////////
