@@ -229,7 +229,15 @@ _.each = function (box, func){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+_.unique = function (arr){
+    let ans = [];
+    for (var i = 0; i < arr.length; i++){
+        if (_.indexOf(arr, arr[i]) === i){
+            ans.push(arr[i])
+        }
+    }
+    return ans;    
+}
 
 /** _.filter
 * Arguments:
@@ -246,7 +254,15 @@ _.each = function (box, func){
 * Extra Credit:
 *   use _.each in your implementation
 */
-
+_.filter = function(arr, func){
+    let ans = [];
+    for (let i = 0; i < arr.length; i++){
+        if (func(arr[i], i, arr)){
+            ans.push(arr[i]);
+        }
+    }
+    return ans;
+}
 
 /** _.reject
 * Arguments:
@@ -260,7 +276,15 @@ _.each = function (box, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function(arr, func){
+    let ans = [];
+    for (let i = 0; i < arr.length; i++){
+        if (!func(arr[i], i, arr)){
+            ans.push(arr[i]);
+        }
+    }
+    return ans;
+}
 
 /** _.partition
 * Arguments:
@@ -280,7 +304,17 @@ _.each = function (box, func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-
+_.partition = function(arr, func){
+    let ans = [[], []];
+    for (let i = 0; i < arr.length; i++){
+        if (func(arr[i], i, arr)){
+            ans[0].push(arr[i]);
+        } else {
+            ans[1].push(arr[i]);
+        }
+    }
+    return ans;
+}
 
 /** _.map
 * Arguments:
@@ -297,7 +331,19 @@ _.each = function (box, func){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function (box, func){
+    let ans = [];
+    if (_.typeOf(box) === 'array'){
+        for (let i = 0; i < box.length; i++){
+            ans.push(func(box[i], i, box));
+        }
+    } else if (_.typeOf(box) === 'object'){
+        for (let key in box){
+            ans.push(func(box[key], key, box));
+        }
+    }
+    return ans;
+}
 
 /** _.pluck
 * Arguments:
@@ -309,7 +355,15 @@ _.each = function (box, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+_.pluck = function (arr, prop){
+    let ans = [];
+    /*for (let i = 0; i < arr.length; i++){
+        if (arr[i].hasOwnProperty(prop)){
+            ans.push(arr[i][prop])
+        }
+    }*/
+    return ans;
+}
 
 /** _.every
 * Arguments:
