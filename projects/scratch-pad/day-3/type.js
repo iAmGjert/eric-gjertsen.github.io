@@ -76,7 +76,7 @@ function isCollection(value) {
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
     if (typeof value === 'object'){
-        if (isArray(value)){
+        if (Array.isArray(value)){
             return 'array';
         } else if (value === null){
             return 'null';
