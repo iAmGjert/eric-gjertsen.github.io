@@ -355,14 +355,19 @@ _.map = function (box, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-_.pluck = function (arr, prop){
+/*_.pluck = function (arr, prop){
     let ans = [];
-    /*for (let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++){
         if (arr[i].hasOwnProperty(prop)){
             ans.push(arr[i][prop])
         }
-    }*/
+    }
     return ans;
+}*/
+_.pluck = function (arr, prop){
+    return _.map(arr, function(ele, i, box){
+        return ele[prop];
+    });
 }
 
 /** _.every
@@ -385,7 +390,39 @@ _.pluck = function (arr, prop){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = function(box, func){
+    let ans = true;
+    if (func){
+        if (Array.isArray(box)){
+            for (let i = 0; i < box.length; i++){
+                if (!func(box[i], i, box)){
+                    ans = false;
+                }
+            }
+        } else {
+            for (let key in box){
+                if(!func(box[key], key, box)){
+                    ans = false;
+                }
+            }
+        }
+    } else {
+        if (Array.isArray(box)){
+            for (let i = 0; i < box.length; i++){
+                if (!box[i]){
+                    ans = false;
+                }
+            }
+        } else {
+            for (let key in box){
+                if (!box[key]){
+                    ans = false;
+                }
+            }
+        }
+    }
+    return ans;
+}
 
 /** _.some
 * Arguments:
@@ -407,7 +444,33 @@ _.pluck = function (arr, prop){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-
+_.some = function(box, func){
+    let ans = false;
+    if (func){
+        if (Array.isArray(box)){
+            for (let i = 0; i < box.length; i++){
+                if (func(box[i], i, box)){
+                    ans = true;
+                }
+            }
+        } else {
+            for (let key in box){
+                if (func(box[key], key, box)){
+                    ans = true;
+                }
+            }
+        }
+    } else {
+        if (Array.isArray(box)){
+            for (let i = 0; i < box.length; i++){
+                if (box[i]){
+                    ans = true;
+                }
+            }
+        }
+    }
+    return ans;
+}
 
 /** _.reduce
 * Arguments:
@@ -427,6 +490,21 @@ _.pluck = function (arr, prop){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
+// create reduce function with 3 parameters of arr, func, and seed
+
+_.reduce = function(array, func, seed) {
+    if (seed === undefined) {
+        seed = array[0];
+        for(var i = 1; i < array.length; i++) {
+            seed = func(seed, array[i], i);
+        }
+    } else {
+        for (var i = 0; i < array.length; i++) {
+            seed = func(seed, array[i], i);
+        }
+    }
+ return seed;
+};
 
 
 /** _.extend
@@ -443,7 +521,10 @@ _.pluck = function (arr, prop){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
+_.extend = function (obj, ...obj2){
+    Object.assign(obj, ...obj2);
+    return obj;
+}
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
