@@ -4,6 +4,7 @@
 
 var customers = require('./data/customers.json');
 var _ = require('underbar');
+const { result } = require('lodash');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -105,48 +106,44 @@ var friendsCount = function (array, name){
 };
 
 var topThreeTags = function (array){
-    /**    let ans = [];
-    let result = [];
-    let numOfTag = [];
-    _.each(array, function(customer, index, collection){
-        ans.push(customer.tags);
-        _.unique(ans);
-    });
-    //console.log(ans);
-    for (let i = 0; i < ans.length; i++){
-        numOfTag.push(0);
-    }
-    _.each(array, function(customer, index, collection){
-        _.each(customer.tags, function(tag, index, collection){
-            _.each(ans, function(test, index, colleciton){
-                if (tag === test){
-                    numOfTag[index]++;
-                }
-            });
-        });
-    });
-    //console.log(numOfTag);
-    return result; */
-
     let ans = {};
-    
+    let greatestNum = 0;
+    let result = [];
     _.each(array, function(customer, index, customers){
         _.each(customer.tags, function(tag, index, tags){
             if (ans[tag]){
                 ans[tag]++;
+                if (greatestNum < ans[tag]){
+                    greatestNum = ans[tag];
+                }
             } else {
                 ans[tag] = 1;
+                if (greatestNum < ans[tag]){
+                    greatestNum = ans[tag];
+                }
             }
         });
     });
-    let result = _.filter(ans, function(tag, index, tags){
-        
+    ans = Object.entries(ans);
+    _.each(ans, function(tag, index, tags){
+        if (tag[1] === greatestNum){
+            result.push(tag[0]);
+        }
     });
-    console.log(result);
     return result;
 };
 
-var genderCount;
+var genderCount = function(array){
+    let genders = {}
+    _.each(array, function(customer, index, customers){
+        if (genders[customer.gender]){
+            genders[customer.gender]++;
+        } else {
+            genders[customer.gender] = 1;
+        }
+    });
+    return genders;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
