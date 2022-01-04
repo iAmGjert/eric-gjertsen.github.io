@@ -105,7 +105,7 @@ var friendsCount = function (array, name){
 };
 
 var topThreeTags = function (array){
-    let ans = [];
+    /**    let ans = [];
     let result = [];
     let numOfTag = [];
     _.each(array, function(customer, index, collection){
@@ -126,8 +126,24 @@ var topThreeTags = function (array){
         });
     });
     //console.log(numOfTag);
-    return result;
+    return result; */
 
+    let ans = {};
+    
+    _.each(array, function(customer, index, customers){
+        _.each(customer.tags, function(tag, index, tags){
+            if (ans[tag]){
+                ans[tag]++;
+            } else {
+                ans[tag] = 1;
+            }
+        });
+    });
+    let result = _.filter(ans, function(tag, index, tags){
+        
+    });
+    console.log(result);
+    return result;
 };
 
 var genderCount;

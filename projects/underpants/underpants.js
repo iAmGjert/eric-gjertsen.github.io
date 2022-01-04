@@ -255,12 +255,19 @@ _.unique = function (arr){
 *   use _.each in your implementation
 */
 _.filter = function(arr, func){
-    let ans = [];
+    /**let ans = [];
     for (let i = 0; i < arr.length; i++){
         if (func(arr[i], i, arr)){
             ans.push(arr[i]);
         }
     }
+    return ans; */
+    let ans = [];
+    _.each(arr, function(ele, ind, array){
+        if (func(ele, ind, array)){
+            ans.push(ele);
+        }
+    });
     return ans;
 }
 
@@ -278,11 +285,16 @@ _.filter = function(arr, func){
 */
 _.reject = function(arr, func){
     let ans = [];
-    for (let i = 0; i < arr.length; i++){
+    /**for (let i = 0; i < arr.length; i++){
         if (!func(arr[i], i, arr)){
             ans.push(arr[i]);
         }
-    }
+    }*/
+    _.each(arr, function(ele, ind, array){
+        if (!func(ele, ind, array)){
+            ans.push(ele);
+        }
+    });
     return ans;
 }
 
