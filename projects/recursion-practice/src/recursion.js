@@ -171,10 +171,8 @@ var multiply = function(x, y) {
     return 0;
   }
   if (y > 0){
-    console.log(x);
     return x + multiply(x, y - 1);
   } else {
-    console.log(x);
     return -x + multiply(x, y + 1);
   }
 
@@ -211,28 +209,65 @@ var compareStr = function(str1, str2) {
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, ans=[]){
+  //base case
+  if (str.length === 0){
+    return ans;
+  }
+  //recursion
+  ans.push(str[0]);
+  return createArray(str.slice(1), ans);
 };
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, newArr=[]) {
+  //base case
+  if (array.length === 0){
+    return newArr;
+  }
+  //recursion
+  newArr.unshift(array[0]);
+  return reverseArr(array.slice(1), newArr);
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, arr=[]) {
+  //base case
+  if (length === 0){
+    return arr;
+  }
+  //recursion
+  arr.push(value)
+  return buildList(value, length - 1, arr)
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
+var countOccurrence = function(array, value, ans = 0) {
+  //base case
+  if (array.length === 0){
+    return ans;
+  }
+  //recursion
+  if (array[0] === value){
+    ans++;
+  }
+  return countOccurrence(array.slice(1), value, ans);
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+var rMap = function(array, callback, ans=[]) {
+  //base case
+  if (array.length === 0){
+    return ans;
+  }
+  //recursion
+  ans.push(callback(array[0]));
+  return rMap(array.slice(1), callback, ans);
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
