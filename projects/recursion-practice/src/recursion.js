@@ -63,7 +63,7 @@ var sumBelow = function(n) {
   if (n > 0){
     n -= 1;
     return n + sumBelow(n);
-  } else if (n < 0){
+  } else {
     n += 1;
     return n + sumBelow(n);
   }
