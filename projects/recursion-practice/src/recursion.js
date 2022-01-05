@@ -155,12 +155,29 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+  //base case
+  if (x - y < 0){
+    return x;
+  } else if (0){}
+  //recursion
+  return modulo(x-y, x);
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
+  if (y === 0 || x === 0){
+    return 0;
+  }
+  if (y > 0){
+    console.log(x);
+    return x + multiply(x, y - 1);
+  } else {
+    console.log(x);
+    return -x + multiply(x, y + 1);
+  }
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
@@ -182,6 +199,14 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  //base case
+  if (str1[0] !== str2[0]){
+    return false;
+  } else if (str1.length === 0){
+    return true;
+  }
+  //recursion
+  return compareStr(str1.slice(1), str2.slice(1));
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
