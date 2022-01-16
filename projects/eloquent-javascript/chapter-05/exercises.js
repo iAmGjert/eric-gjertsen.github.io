@@ -2,8 +2,10 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
-
+function flatten(arr) {
+  return arr.reduce(function(accumulator, element){
+    return accumulator.concat(element);
+  }, []);
 }
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -26,8 +28,21 @@ function every() {
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(str) {
+  const arr = countBy(str, function(char){
+    const unicode = char.charCodeAt();
+    const script = characterScript(unicode);
+    console.log(script);
+    if (script !== null){
+      return script.direction;
+    } else {
+      return script;
+    };
+  });
+  arr.sort(function(a, b){
+    return b.count - a.count;
+  });
+  return arr[0].name;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
