@@ -40,7 +40,7 @@ console.log(myFullName); //prints => undefined undefined
 myName = 'John';
 console.log(myName); // prints => John
 myLastName = 'Smith';
-console.log(myLastName);// prints => Smith
+console.log(myLastName); // prints => Smith
 
 
 // 2. var, let, const //
