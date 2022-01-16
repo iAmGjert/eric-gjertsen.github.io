@@ -72,10 +72,8 @@ function reverseArrayInPlace(arr) {
 function arrayToList(arr) {
   var rest = null;
   for (let i = arr.length - 1; i >= 0; i--){
-    console.log('hit this condition');
     rest = {value: arr[i], rest };
   };
-  console.log(rest);
   return rest;
 }
 
@@ -83,15 +81,25 @@ function arrayToList(arr) {
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray(list) {
+function listToArray(list, arr=[]) {
+  //base case
+  if (list.rest === null){
+    arr.push(list.value);
+    return arr;
+  }
+  //recursion
+  arr.push(list.value);
+  return listToArray(list.rest, arr);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(element, list) {
+  let newList = [...listToArray(list)];
+  newList.unshift(element);
+  return arrayToList(newList);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -102,7 +110,7 @@ function nth(list, n) {
   //base case
   if (n === 0){
     return list.value;
-  } else if (n === -1){
+  } else if (n < 0){
     return undefined;
   }
   //recursion
