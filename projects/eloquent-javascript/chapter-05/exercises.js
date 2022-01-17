@@ -12,16 +12,26 @@ function flatten(arr) {
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop() {
-
+function loop(value, test, update, body) {
+  if (test(value)){
+    body(value);
+    return loop(update(value), test, update, body);
+  } else {
+    return value;
+  };
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(arr, test) {
+  for (let i = 0; i < arr.length; i++){
+    if (test(arr[i]) === false){
+      return false;
+    };
+  };
+  return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -32,7 +42,6 @@ function dominantDirection(str) {
   const arr = countBy(str, function(char){
     const unicode = char.charCodeAt();
     const script = characterScript(unicode);
-    console.log(script);
     if (script !== null){
       return script.direction;
     } else {
